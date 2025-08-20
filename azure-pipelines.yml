@@ -26,13 +26,13 @@ stages:
                 mavenVersionOption: 'Default'
 
             - script: |
-                mvn test -Dkarate.output.dir=$(Build.ArtifactStagingDirectory)/surefire-reports
+                mvn test
               displayName: 'Run Karate Tests'
 
             - task: PublishTestResults@2
               inputs:
                 testResultsFormat: 'JUnit'
-                testResultsFiles: '$(Build.ArtifactStagingDirectory)/**/TEST-*.xml'
+                testResultsFiles: 'target/surefire-reports/TEST-*.xml'
                 testRunTitle: 'Karate Test Run $(Build.BuildId)'
                 mergeTestResults: true
                 publishRunAttachments: true
