@@ -12,13 +12,14 @@ stages:
         deploy:
           steps:
             - checkout: self
+            
+            - script: |
+                  echo "Setting JAVA_HOME to Oracle JDK 17"
+                  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home
+                  export PATH=$JAVA_HOME/bin:$PATH
+                  java -version
+                  displayName: 'Set JAVA_HOME to Java 17'
 
-            - task: JavaToolInstaller@0
-              inputs:
-                versionSpec: '17'
-                jdkArchitectureOption: 'x64'
-                jdkSourceOption: 'LocalDirectory'
-                jdkFile: "/Users/apple/Downloads/jdk-17.0.11_macos-x64_bin.tar.gz"
             - task: Maven@4
               displayName: 'Maven Build'
               inputs:
