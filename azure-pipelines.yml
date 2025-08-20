@@ -18,7 +18,8 @@ stages:
               inputs:
                 versionSpec: '17'
                 jdkArchitectureOption: 'x64'
-                jdkSourceOption: 'AzureStorage'
+                jdkSourceOption: 'LocalDirectory'
+                jdkFile: '/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home'
 
             - task: Maven@1
               displayName: 'Maven Build'
