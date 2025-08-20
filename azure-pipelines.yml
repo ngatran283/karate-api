@@ -18,12 +18,14 @@ stages:
               inputs:
                 versionSpec: '17'
                 jdkArchitectureOption: 'x64'
-                jdkSourceOption: 'PreInstalled'
-                
-            - task: Maven@3
+                jdkSourceOption: 'AzureStorage'
+
+            - task: Maven@1
+              displayName: 'Maven Build'
               inputs:
                 mavenPomFile: 'pom.xml'
                 goals: 'clean install -DskipTests'
+                mavenVersionOption: 'Default'
 
             - script: |
                 mvn test -Dkarate.options="--tags @smoke" -Dkarate.output.dir=$(Build.ArtifactStagingDirectory)/karate-reports
