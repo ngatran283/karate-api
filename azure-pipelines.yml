@@ -18,8 +18,7 @@ stages:
               inputs:
                 versionSpec: '17'
                 jdkArchitectureOption: 'x64'
-                jdkSourceOption: 'LocalDirectory'
-                jdkFile: '/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home'
+                jdkSourceOption: 'PreInstalled'
 
             - task: Maven@1
               displayName: 'Maven Build'
