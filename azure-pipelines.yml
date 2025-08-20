@@ -18,7 +18,7 @@ stages:
                 versionSpec: '17'
                 jdkArchitectureOption: 'x64'
                 jdkSourceOption: 'LocalDirectory'
-                jdkFile: "/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home"
+                jdkFile: "/Users/apple/Downloads/jdk-17.0.11_macos-x64_bin.tar.gz"
             - task: Maven@4
               displayName: 'Maven Build'
               inputs:
