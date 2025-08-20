@@ -14,13 +14,12 @@ stages:
             - checkout: self
 
             - task: JavaToolInstaller@0
-              displayName: 'Install Java 17'
               inputs:
                 versionSpec: '17'
                 jdkArchitectureOption: 'x64'
                 jdkSourceOption: 'PreInstalled'
 
-            - task: Maven@1
+            - task: Maven@4
               displayName: 'Maven Build'
               inputs:
                 mavenPomFile: 'pom.xml'
