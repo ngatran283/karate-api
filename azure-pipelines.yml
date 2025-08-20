@@ -1,0 +1,42 @@
+stages:
+- stage: Test
+  displayName: 'Run Karate Tests'
+  jobs:
+  - deployment: RunKarate
+    displayName: 'Execute Karate Tests'
+    environment: 'QA-Test-Env'
+    pool:
+      vmImage: 'ubuntu-latest'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - checkout: self
+
+            - task: JavaToolInstaller@0
+              displayName: 'Install Java 17'
+              inputs:
+                versionSpec: '17'
+                jdkArchitectureOption: 'x64'
+                jdkSourceOption: 'PreInstalled'
+                
+            - task: Maven@3
+              inputs:
+                mavenPomFile: 'pom.xml'
+                goals: 'clean install -DskipTests'
+
+            - script: |
+                mvn test -Dkarate.options="--tags @smoke" -Dkarate.output.dir=$(Build.ArtifactStagingDirectory)/karate-reports
+              displayName: 'Run Karate Tests'
+
+            - task: PublishTestResults@2
+              inputs:
+                testResultsFormat: 'JUnit'
+                testResultsFiles: '$(Build.ArtifactStagingDirectory)/karate-reports/*.xml'
+                testRunTitle: 'Karate Test Run $(Build.BuildId)'
+                mergeTestResults: true
+                publishRunAttachments: true
+
+            - task: NodeTool@0
+              inputs:
+                versionSpec: '18.x'
