@@ -6,7 +6,7 @@ stages:
     displayName: 'Execute Karate Tests'
     environment: 'QA-Test-Env'
     pool:
-      vmImage: 'ubuntu-latest'
+      name: 'Default'
     strategy:
       runOnce:
         deploy:
