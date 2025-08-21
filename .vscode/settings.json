@@ -1,3 +1,12 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-17",
+            "path": "/path/to/your/jdk-17"
+        }
+    ],
+    "files.associations": {
+        "*.feature": "cucumber"
+    }
 }
