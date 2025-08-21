@@ -41,7 +41,10 @@ stages:
                 testResultsFiles: $(testReportFile)
                 testRunTitle: 'Karate Test Run $(Build.BuildId)'
                 mergeTestResults: true
-                publishRunAttachments: true           
+                publishRunAttachments: true       
+              condition:
+                succeededOrFailed()
+                    
             - task: NodeTool@0
               inputs:
                 versionSpec: '20.x'
