@@ -56,7 +56,7 @@ async function parseJUnitReport(filePath) {
               ? tc.failure.$.message : (tc.failure._ || '');
               stackTrace = (tc.failure._ || '');
             }
-            systemOutput = tc['system-out']._ || '';
+            systemOutput = tc.system-out._ || '';
         }
 
         return {
@@ -210,6 +210,7 @@ for (const point of points) {
   });
 
   if(testcase.outcome!=='Passed'&&!testcase.systemOutput){
+    console.log(testcase.systemOutput)
     payloadAttachment.push({
       pointId: point.id, // ✅ use pointId, not id
       stream: Buffer.from(testcase.systemOutput).toString('base64'),
