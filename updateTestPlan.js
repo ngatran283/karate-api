@@ -172,7 +172,7 @@ for (const point of points) {
     automatedTestName: testcase.name,
     automatedTestType: 'Unit',
     testCaseTitle: testcase.name,
-    errorMessage: testcase.outcome!=='Passed'?errorMessage: '',
+    errorMessage: testcase.outcome!=='Passed'?testcase.errorMessage: '',
     state:'Completed'
   });
 }
