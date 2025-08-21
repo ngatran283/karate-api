@@ -38,13 +38,24 @@ async function parseJUnitReport(filePath) {
         let name = tc.$.name.replace(/^\[\d+:\d+\]\s*/, ''); // remove [1:4]
         let outcome = "Passed";
         let errorMessage = "";
+        let stackTrace = "";
 
         if (tc.failure) {
             outcome = "Failed";
             if (Array.isArray(tc.failure)) {
-                errorMessage = tc.failure.map(f => f._ || f).join('\n');
+              errorMessage = tc.failure
+              .map(f => f.$ && f.$.message ? f.$.message : (f._ || f))
+              .join('\n');
+              stackTrace = tc.failure
+              .map(f => f.$ && f.$.type ? f.$.type : (f._ || f))
+              .join('\n');
             } else {
-                errorMessage = tc.failure._ || tc.failure;
+              errorMessage = tc.failure.$ && tc.failure.$.message
+              ? tc.failure.$.message
+              : (tc.failure._ || '');
+              errorMessage = tc.failure.$ && tc.failure.$.type
+              ? tc.failure.$.type
+              : (tc.failure._ || '');
             }
         }
 
