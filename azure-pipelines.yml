@@ -34,7 +34,14 @@ stages:
                 mavenVersionOption: 'Default'
             - script: |
                 mvn test
-              displayName: 'Run Karate Tests'             
+              displayName: 'Run Karate Tests'  
+            - task: PublishTestResults@2
+              inputs:
+                testResultsFormat: 'JUnit'
+                testResultsFiles: $(testReportFile)
+                testRunTitle: 'Karate Test Run $(Build.BuildId)'
+                mergeTestResults: true
+                publishRunAttachments: true           
             - task: NodeTool@0
               inputs:
                 versionSpec: '20.x'
@@ -43,7 +50,7 @@ stages:
             
             # 5️⃣ Update Azure DevOps Test Plan with Karate results
             - script: |
-                node updateTestPlan.js
+                node updateTestPlan2.js
               displayName: 'Update Azure DevOps Test Plan with Karate Results'
               env:
                 ADO_ORG: $(ADO_ORG)
@@ -53,5 +60,6 @@ stages:
                 ADO_TEST_SUITE_ID: $(ADO_TEST_SUITE_ID)
                 TEST_REPORT_FILE: $(testReportFile)
                 BUILD_BUILDID: $(Build.BuildId)
+                BUILD_URI: "$(Build.BuildUri)"
               condition:
                 succeededOrFailed()
