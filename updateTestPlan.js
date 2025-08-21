@@ -56,7 +56,7 @@ async function parseJUnitReport(filePath) {
               ? tc.failure.$.message : (tc.failure._ || '');
               stackTrace = (tc.failure._ || '');
             }
-            systemOutput = tc.system-out._ || '';
+            systemOutput = tc['system-out']._ || '';
         }
 
         return {
