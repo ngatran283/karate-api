@@ -49,17 +49,14 @@ async function parseJUnitReport(filePath) {
               .map(f => f.$ && f.$.message ? f.$.message : (f._ || f))
               .join('\n');
               stackTrace = tc.failure
-              .map(f => f.$ && f.$.type ? f.$.type : (f._ || f))
+              .map(f => (f._ || ''))
               .join('\n');
             } else {
               errorMessage = tc.failure.$ && tc.failure.$.message
-              ? tc.failure.$.message
-              : (tc.failure._ || '');
-              stackTrace = tc.failure.$ && tc.failure.$.type
-              ? tc.failure.$.type
-              : (tc.failure._ || '');
+              ? tc.failure.$.message : (tc.failure._ || '');
+              stackTrace = (tc.failure._ || '');
             }
-            systemOutput = tc['system-out'] || tc['system-out']._ || '';
+            systemOutput = tc['system-out']._ || '';
         }
 
         return {
