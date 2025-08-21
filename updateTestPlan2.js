@@ -175,12 +175,14 @@ async function getLatestRunId() {
   console.log('Build URI:', buildUri);
   const url = `${baseUrl}/test/runs?buildUri=${buildUri}&api-version=7.1`;
   console.log(url);
-  const response = await fetch(url, { headers: authHeader });
-  if (!response.ok) throw new Error(`Failed to get test runs: ${response.statusText}`);
-
-  const data = await response.json();
+  const res = await fetch(url, { headers: { Authorization: authHeader() } });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Failed to get test runs: ${res.status} ${text}`);
+  }
+  console.log(res)
+  const data = await res.json();
   if (data.count === 0) throw new Error('No test runs found for this build.');
-
   return data.value[0].id; // latest run ID
 }
 
