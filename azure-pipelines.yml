@@ -15,6 +15,8 @@ stages:
       ADO_TEST_PLAN_ID: '3'          # your Test Plan ID
       ADO_TEST_SUITE_ID: '5'         # optional, target specific suite
       testReportFile: 'target/surefire-reports/TEST-TestRunner.xml'
+      testReportHtmlFile: 'target/karate-reports/karate-summary.html'
+
     strategy:
       runOnce:
         deploy:
@@ -35,16 +37,6 @@ stages:
             - script: |
                 mvn test
               displayName: 'Run Karate Tests'  
-            - task: PublishTestResults@2
-              inputs:
-                testResultsFormat: 'JUnit'
-                testResultsFiles: $(testReportFile)
-                testRunTitle: 'Karate Test Run $(Build.BuildId)'
-                mergeTestResults: true
-                publishRunAttachments: true       
-              condition:
-                succeededOrFailed()
-                    
             - task: NodeTool@0
               inputs:
                 versionSpec: '20.x'
@@ -53,7 +45,7 @@ stages:
             
             # 5️⃣ Update Azure DevOps Test Plan with Karate results
             - script: |
-                node updateTestPlan2.js
+                node updateTestPlan.js
               displayName: 'Update Azure DevOps Test Plan with Karate Results'
               env:
                 ADO_ORG: $(ADO_ORG)
@@ -62,7 +54,7 @@ stages:
                 ADO_TEST_PLAN_ID: $(ADO_TEST_PLAN_ID)
                 ADO_TEST_SUITE_ID: $(ADO_TEST_SUITE_ID)
                 TEST_REPORT_FILE: $(testReportFile)
+                TEST_REPORT_HTML_FILE: $(testReportHtmlFile)
                 BUILD_BUILDID: $(Build.BuildId)
-                BUILD_URI: "$(Build.BuildUri)"
               condition:
                 succeededOrFailed()

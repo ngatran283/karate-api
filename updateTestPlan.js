@@ -11,6 +11,7 @@ const ADO_PAT = process.env.ADO_PAT;
 const ADO_TEST_PLAN_ID = process.env.ADO_TEST_PLAN_ID;
 const ADO_TEST_SUITE_ID = process.env.ADO_TEST_SUITE_ID; // optional
 const TEST_REPORT_FILE = process.env.TEST_REPORT_FILE;
+const TEST_REPORT_HTML_FILE = process.env.TEST_REPORT_HTML_FILE;
 const BUILD_BUILDID = process.env.BUILD_BUILDID;
 
 if (!ADO_ORG || !ADO_PROJECT || !ADO_PAT || !ADO_TEST_PLAN_ID || !TEST_REPORT_FILE) {
@@ -53,7 +54,7 @@ async function parseJUnitReport(filePath) {
               errorMessage = tc.failure.$ && tc.failure.$.message
               ? tc.failure.$.message
               : (tc.failure._ || '');
-              errorMessage = tc.failure.$ && tc.failure.$.type
+              stackTrace = tc.failure.$ && tc.failure.$.type
               ? tc.failure.$.type
               : (tc.failure._ || '');
             }
@@ -101,7 +102,7 @@ async function createTestRun() {
 }
 
 // Upload Attachment (JUnit XML)
-async function addRunAttachment(runId, filePath) {
+async function addRunAttachmentRun(runId, filePath) {
   const url = `${baseUrl}/test/runs/${runId}/attachments?api-version=7.1`;
   const content = fs.readFileSync(filePath);
 
@@ -124,6 +125,23 @@ async function addRunAttachment(runId, filePath) {
   if (!res.ok) throw new Error(`Failed to attach file: ${res.status} ${await res.text()}`);
   return res.json();
 }
+
+async function addRunAttachmentResult(runId, pointId, formData) {
+  const url = `${baseUrl}/test/runs/${runId}/Results/${pointId}/attachments?api-version=7.1`;
+
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Authorization': authHeader(),
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  });
+
+  if (!res.ok) throw new Error(`Failed to attach file: ${res.status} ${await res.text()}`);
+  return res.json();
+}
+
 
 // Fetch test points for the suite
 async function getTestPoints() {
@@ -167,6 +185,7 @@ async function addTestResults(runId, testcases) {
 
   // Map suites to points
 const payload = [];
+const payloadAttachment =[];
 for (const point of points) {
   // Find matching suite by name (case-insensitive)
   const testcase = testcases.find(s => 
@@ -184,10 +203,20 @@ for (const point of points) {
     automatedTestType: 'Unit',
     testCaseTitle: testcase.name,
     errorMessage: testcase.outcome!=='Passed'?testcase.errorMessage: '',
+    stackTrace: testcase.stackTrace,
     state:'Completed'
   });
+
+  if(testcase.outcome!=='Passed'&&!testcase.systemOutput){
+    payloadAttachment.push({
+      pointId: point.id, // ✅ use pointId, not id
+      stream: Buffer.from(testcase.systemOutput).toString('base64'),
+      fileName: 'Console_Output.log',
+      comment: 'Failure Log',
+      attachmentType: 'GeneralAttachment',
+    })
+  }
 }
-  console.log(payload)
   const patchUrl = `${baseUrl}/test/runs/${runId}/results?api-version=7.1`;
   const patchRes = await fetch(patchUrl, {
     method: 'PATCH',
@@ -204,6 +233,10 @@ for (const point of points) {
   }
 
   console.log(`Updated ${payload.length} test results for run ${runId}.`);
+
+  for(const formData of payloadAttachment){
+    addRunAttachmentResult(runId,formData.pointId,formData)
+  }
   return patchRes.json();
 }
 
@@ -243,7 +276,8 @@ async function completeTestRun(runId) {
     console.log(`Test run created: ID ${run.id}`);
 
     console.log('Attaching JUnit report...');
-    await addRunAttachment(run.id, TEST_REPORT_FILE);
+    await addRunAttachmentRun(run.id, TEST_REPORT_FILE);
+    await addRunAttachmentRun(run.id, TEST_REPORT_HTML_FILE);
     console.log('✅ JUnit report attached.');
 
     console.log('Uploading test results...');
