@@ -36,7 +36,7 @@ async function parseJUnitReport(filePath) {
   if (!Array.isArray(testcases)) testcases = [testcases];
 
     return testcases.map(tc => {
-        let name = tc.$.name.replace(/^\[\d+:\d+\]\s*/, ''); // remove [1:4]
+        let name = tc.$.name
         let outcome = "Passed";
         let errorMessage = "";
         let stackTrace = "";
@@ -123,9 +123,9 @@ for (const point of points) {
   }
   payload.push({
     id: point.id, // ✅ use pointId, not id
-    automatedTestName: testcase.name,
+    automatedTestName: testcase.name.replace(/^\[\d+:\d+\]\s*/, ''),
     automatedTestType: 'Unit',
-    testCaseTitle: testcase.name,
+    testCaseTitle: testcase.name.replace(/^\[\d+:\d+\]\s*/, ''),
     state:'Completed'
   });
 }
