@@ -31,18 +31,16 @@ stages:
                 mavenPomFile: 'pom.xml'
                 goals: 'clean install -DskipTests'
                 mavenVersionOption: 'Default'
-
             - script: |
                 mvn test
               displayName: 'Run Karate Tests'
-
-            - task: PublishHtmlReport@1
+            - task: PublishBuildArtifacts@1
               inputs:
-                reportDir: 'target/karate-reports'
-                reportTitle: 'Karate Test Html Report $(Build.BuildId)'
-                condition:
-                  succeededOrFailed()   
-
+                targetPath: 'target/karate-reports/karate-summary.html'
+                ArtifactName: 'Karate Test Html Report $(Build.BuildId)'
+                publishLocation: 'FilePath'
+              condition:
+                succeededOrFailed()  
             - task: PublishTestResults@2
               inputs:
                 testResultsFormat: 'JUnit'
