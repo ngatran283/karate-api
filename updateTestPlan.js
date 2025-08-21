@@ -166,21 +166,14 @@ for (const point of points) {
     console.warn(`⚠️ No matching suite found for test point "${point.title}" (ID ${point.id})`);
     continue;
   }
-  const outcome = testcase.failures > 0 ? 'Failed' :
-  testcase.skipped > 0 ? 'NotExecuted' : 'Passed';
   payload.push({
     id: point.id, // ✅ use pointId, not id
-    outcome:
-      testcase.failures > 0 ? 'Failed' :
-      testcase.skipped > 0 ? 'NotExecuted' : 'Passed',
+    outcome:testcase.outcome,
     automatedTestName: testcase.name,
     automatedTestType: 'Unit',
     testCaseTitle: testcase.name,
-    errorMessage: outcome!=='Passed'?testcase.testcases
-    .map(tc => `${tc.name} | ${tc.classname} | ${tc.status}${tc.failureMessage ? ` | ${tc.failureMessage}` : ''}`)
-    .join('\n'): '',
+    errorMessage: testcase.outcome!=='Passed'?errorMessage: '',
     state:'Completed'
-
   });
 }
   console.log(payload)
