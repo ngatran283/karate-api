@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestRunner" time="2.422" tests="2" errors="0" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestRunner" time="2.303" tests="0" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="VN"/>
     <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/23.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/apple/Desktop/project/harting/karate-api/target/surefire/surefirebooter5722223359599585300.jar /Users/apple/Desktop/project/harting/karate-api/target/surefire 2025-08-20T21-13-41_428-jvmRun1 surefire6784465041809521298tmp surefire_08608051654129906572tmp"/>
+    <property name="sun.java.command" value="/Users/apple/Desktop/project/harting/karate-api/target/surefire/surefirebooter8951269196607100849.jar /Users/apple/Desktop/project/harting/karate-api/target/surefire 2025-08-20T22-44-17_301-jvmRun1 surefire17021697393256206464tmp surefire_015419978306748125872tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/apple/Desktop/project/harting/karate-api/target/test-classes:/Users/apple/Desktop/project/harting/karate-api/target/classes:/Users/apple/.m2/repository/io/karatelabs/karate-junit5/1.5.1/karate-junit5-1.5.1.jar:/Users/apple/.m2/repository/io/karatelabs/karate-core/1.5.1/karate-core-1.5.1.jar:/Users/apple/.m2/repository/org/graalvm/js/js-scriptengine/24.0.0/js-scriptengine-24.0.0.jar:/Users/apple/.m2/repository/org/graalvm/polyglot/polyglot/24.0.0/polyglot-24.0.0.jar:/Users/apple/.m2/repository/org/graalvm/sdk/collections/24.0.0/collections-24.0.0.jar:/Users/apple/.m2/repository/org/graalvm/sdk/nativeimage/24.0.0/nativeimage-24.0.0.jar:/Users/apple/.m2/repository/org/graalvm/sdk/word/24.0.0/word-24.0.0.jar:/Users/apple/.m2/repository/org/graalvm/js/js-language/24.0.0/js-language-24.0.0.jar:/Users/apple/.m2/repository/org/graalvm/regex/regex/24.0.0/regex-24.0.0.jar:/Users/apple/.m2/repository/org/graalvm/truffle/truffle-api/24.0.0/truffle-api-24.0.0.jar:/Users/apple/.m2/repository/org/graalvm/shadowed/icu4j/24.0.0/icu4j-24.0.0.jar:/Users/apple/.m2/repository/org/thymeleaf/thymeleaf/3.1.2.RELEASE/thymeleaf-3.1.2.RELEASE.jar:/Users/apple/.m2/repository/ognl/ognl/3.3.4/ognl-3.3.4.jar:/Users/apple/.m2/repository/org/javassist/javassist/3.29.0-GA/javassist-3.29.0-GA.jar:/Users/apple/.m2/repository/org/attoparser/attoparser/2.0.7.RELEASE/attoparser-2.0.7.RELEASE.jar:/Users/apple/.m2/repository/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.jar:/Users/apple/.m2/repository/com/linecorp/armeria/armeria/1.31.3/armeria-1.31.3.jar:/Users/apple/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.18.1/jackson-core-2.18.1.jar:/Users/apple/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.18.1/jackson-annotations-2.18.1.jar:/Users/apple/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.18.1/jackson-databind-2.18.1.jar:/Users/apple/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.18.1/jackson-datatype-jdk8-2.18.1.jar:/Users/apple/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.18.1/jackson-datatype-jsr310-2.18.1.jar:/Users/apple/.m2/repository/io/micrometer/micrometer-core/1.13.6/micrometer-core-1.13.6.jar:/Users/apple/.m2/repository/io/micrometer/micrometer-commons/1.13.6/micrometer-commons-1.13.6.jar:/Users/apple/.m2/repository/io/micrometer/micrometer-observation/1.13.6/micrometer-observation-1.13.6.jar:/Users/apple/.m2/repository/org/hdrhistogram/HdrHistogram/2.2.2/HdrHistogram-2.2.2.jar:/Users/apple/.m2/repository/org/latencyutils/LatencyUtils/2.0.3/LatencyUtils-2.0.3.jar:/Users/apple/.m2/repository/io/netty/netty-transport/4.1.115.Final/netty-transport-4.1.115.Final.jar:/Users/apple/.m2/repository/io/netty/netty-common/4.1.115.Final/netty-common-4.1.115.Final.jar:/Users/apple/.m2/repository/io/netty/netty-buffer/4.1.115.Final/netty-buffer-4.1.115.Final.jar:/Users/apple/.m2/repository/io/netty/netty-resolver/4.1.115.Final/netty-resolver-4.1.115.Final.jar:/Users/apple/.m2/repository/io/netty/netty-codec-haproxy/4.1.115.Final/netty-codec-haproxy-4.1.115.Final.jar:/Users/apple/.m2/repository/io/netty/netty-codec/4.1.115.Final/netty-codec-4.1.115.Final.jar:/Users/apple/.m2/repository/io/netty/netty-codec-http2/4.1.115.Final/netty-codec-http2-4.1.115.Final.jar:/Users/apple/.m2/repository/io/netty/netty-handler/4.1.115.Final/netty-handler-4.1.115.Final.jar:/Users/apple/.m2/repository/io/netty/netty-codec-http/4.1.115.Final/netty-codec-http-4.1.115.Final.jar:/Users/apple/.m2/repository/io/netty/netty-resolver-dns/4.1.115.Final/netty-resolver-dns-4.1.115.Final.jar:/Users/apple/.m2/repository/io/netty/netty-codec-dns/4.1.115.Final/netty-codec-dns-4.1.115.Final.jar:/Users/apple/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.115.Final/netty-transport-native-unix-common-4.1.115.Final-linux-x86_64.jar:/Users/apple/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.115.Final/netty-transport-native-unix-common-4.1.115.Final-linux-aarch_64.jar:/Users/apple/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.115.Final/netty-transport-native-unix-common-4.1.115.Final-osx-x86_64.jar:/Users/apple/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.115.Final/netty-transport-native-unix-common-4.1.115.Final-osx-aarch_64.jar:/Users/apple/.m2/repository/org/reactivestreams/reactive-streams/1.0.4/reactive-streams-1.0.4.jar:/Users/apple/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/apple/.m2/repository/io/netty/netty-handler-proxy/4.1.115.Final/netty-handler-proxy-4.1.115.Final.jar:/Users/apple/.m2/repository/io/netty/netty-codec-socks/4.1.115.Final/netty-codec-socks-4.1.115.Final.jar:/Users/apple/.m2/repository/io/netty/netty-transport-native-epoll/4.1.115.Final/netty-transport-native-epoll-4.1.115.Final-linux-x86_64.jar:/Users/apple/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.115.Final/netty-transport-native-unix-common-4.1.115.Final.jar:/Users/apple/.m2/repository/io/netty/netty-transport-classes-epoll/4.1.115.Final/netty-transport-classes-epoll-4.1.115.Final.jar:/Users/apple/.m2/repository/io/netty/netty-transport-native-epoll/4.1.115.Final/netty-transport-native-epoll-4.1.115.Final-linux-aarch_64.jar:/Users/apple/.m2/repository/io/netty/netty-transport-native-kqueue/4.1.115.Final/netty-transport-native-kqueue-4.1.115.Final-osx-x86_64.jar:/Users/apple/.m2/repository/io/netty/netty-transport-classes-kqueue/4.1.115.Final/netty-transport-classes-kqueue-4.1.115.Final.jar:/Users/apple/.m2/repository/io/netty/netty-resolver-dns-native-macos/4.1.115.Final/netty-resolver-dns-native-macos-4.1.115.Final-osx-x86_64.jar:/Users/apple/.m2/repository/io/netty/netty-resolver-dns-classes-macos/4.1.115.Final/netty-resolver-dns-classes-macos-4.1.115.Final.jar:/Users/apple/.m2/repository/io/netty/netty-transport-native-kqueue/4.1.115.Final/netty-transport-native-kqueue-4.1.115.Final-osx-aarch_64.jar:/Users/apple/.m2/repository/io/netty/netty-resolver-dns-native-macos/4.1.115.Final/netty-resolver-dns-native-macos-4.1.115.Final-osx-aarch_64.jar:/Users/apple/.m2/repository/io/netty/netty-tcnative-boringssl-static/2.0.69.Final/netty-tcnative-boringssl-static-2.0.69.Final-linux-x86_64.jar:/Users/apple/.m2/repository/io/netty/netty-tcnative-classes/2.0.69.Final/netty-tcnative-classes-2.0.69.Final.jar:/Users/apple/.m2/repository/io/netty/netty-tcnative-boringssl-static/2.0.69.Final/netty-tcnative-boringssl-static-2.0.69.Final-linux-aarch_64.jar:/Users/apple/.m2/repository/io/netty/netty-tcnative-boringssl-static/2.0.69.Final/netty-tcnative-boringssl-static-2.0.69.Final-osx-x86_64.jar:/Users/apple/.m2/repository/io/netty/netty-tcnative-boringssl-static/2.0.69.Final/netty-tcnative-boringssl-static-2.0.69.Final-osx-aarch_64.jar:/Users/apple/.m2/repository/io/netty/netty-tcnative-boringssl-static/2.0.69.Final/netty-tcnative-boringssl-static-2.0.69.Final-windows-x86_64.jar:/Users/apple/.m2/repository/com/aayushatharva/brotli4j/brotli4j/1.17.0/brotli4j-1.17.0.jar:/Users/apple/.m2/repository/com/aayushatharva/brotli4j/service/1.17.0/service-1.17.0.jar:/Users/apple/.m2/repository/com/aayushatharva/brotli4j/native-osx-x86_64/1.17.0/native-osx-x86_64-1.17.0.jar:/Users/apple/.m2/repository/org/apache/httpcomponents/httpclient/4.5.14/httpclient-4.5.14.jar:/Users/apple/.m2/repository/org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16.jar:/Users/apple/.m2/repository/commons-codec/commons-codec/1.16.1/commons-codec-1.16.1.jar:/Users/apple/.m2/repository/ch/qos/logback/logback-classic/1.5.4/logback-classic-1.5.4.jar:/Users/apple/.m2/repository/ch/qos/logback/logback-core/1.5.4/logback-core-1.5.4.jar:/Users/apple/.m2/repository/org/slf4j/jcl-over-slf4j/2.0.12/jcl-over-slf4j-2.0.12.jar:/Users/apple/.m2/repository/org/slf4j/slf4j-api/2.0.12/slf4j-api-2.0.12.jar:/Users/apple/.m2/repository/org/antlr/antlr4-runtime/4.13.1/antlr4-runtime-4.13.1.jar:/Users/apple/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/apple/.m2/repository/net/minidev/json-smart/2.5.1/json-smart-2.5.1.jar:/Users/apple/.m2/repository/net/minidev/accessors-smart/2.5.1/accessors-smart-2.5.1.jar:/Users/apple/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar:/Users/apple/.m2/repository/org/yaml/snakeyaml/2.3/snakeyaml-2.3.jar:/Users/apple/.m2/repository/de/siegmar/fastcsv/3.4.0/fastcsv-3.4.0.jar:/Users/apple/.m2/repository/info/picocli/picocli/4.7.6/picocli-4.7.6.jar:/Users/apple/.m2/repository/io/github/classgraph/classgraph/4.8.179/classgraph-4.8.179.jar:/Users/apple/.m2/repository/io/github/t12y/resemble/1.1.0/resemble-1.1.0.jar:/Users/apple/.m2/repository/io/github/t12y/ssim/1.0.0/ssim-1.0.0.jar:/Users/apple/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/Users/apple/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/apple/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/Users/apple/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/apple/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/Users/apple/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:"/>
@@ -28,12 +28,14 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="karate.options" value="--tags @smoke"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/apple/Desktop/project/harting/karate-api/target/surefire/surefirebooter5722223359599585300.jar"/>
+    <property name="surefire.real.class.path" value="/Users/apple/Desktop/project/harting/karate-api/target/surefire/surefirebooter8951269196607100849.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="23.0.2"/>
     <property name="user.name" value="apple"/>
+    <property name="karate.output.dir" value="/Users/apple/Desktop/output"/>
     <property name="stdout.encoding" value="UTF-8"/>
     <property name="path.separator" value=":"/>
     <property name="os.version" value="15.1.1"/>
@@ -58,99 +60,4 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="runAll[1][1]" classname="TestRunner" time="1.104">
-    <failure message="match failed: EQUALS&#10;  $ | not equal | match failed for name: &apos;id_config&apos; (MAP:MAP)&#10;  {&quot;id_config&quot;:&quot;1235435436545&quot;,&quot;info_1&quot;:&quot;ok la&quot;}&#10;  {&quot;id_config&quot;:&quot;123543543653&quot;,&quot;info_1&quot;:&quot;ok la&quot;}&#10;&#10;    $.id_config | not equal (STRING:STRING)&#10;    &apos;1235435436545&apos;&#10;    &apos;123543543653&apos;&#10;&#10;classpath:feature/sample.feature:8" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: 
-match failed: EQUALS
-  $ | not equal | match failed for name: 'id_config' (MAP:MAP)
-  {"id_config":"1235435436545","info_1":"ok la"}
-  {"id_config":"123543543653","info_1":"ok la"}
-
-    $.id_config | not equal (STRING:STRING)
-    '1235435436545'
-    '123543543653'
-
-classpath:feature/sample.feature:8
-</failure>
-    <system-out><![CDATA[21:13:43.646 [main] DEBUG org.apache.http.client.protocol.RequestAddCookies -- CookieSpec selected: karate
-21:13:43.652 [main] DEBUG org.apache.http.client.protocol.RequestAuthCache -- Auth cache not set in the context
-21:13:43.655 [main] DEBUG com.intuit.karate -- request:
-1 > GET http://localhost:3000/config/info/12
-1 > Host: localhost:3000
-1 > Connection: Keep-Alive
-1 > User-Agent: Apache-HttpClient/4.5.14 (Java/23.0.2)
-1 > Accept-Encoding: gzip,deflate
-
-
-21:13:43.659 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection request: [route: {}->http://localhost:3000][total available: 0; route allocated: 0 of 5; total allocated: 0 of 10]
-21:13:43.667 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection leased: [id: 0][route: {}->http://localhost:3000][total available: 0; route allocated: 1 of 5; total allocated: 1 of 10]
-21:13:43.667 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Opening connection {}->http://localhost:3000
-21:13:43.687 [main] DEBUG org.apache.http.impl.conn.DefaultHttpClientConnectionOperator -- Connecting to localhost/127.0.0.1:3000
-21:13:43.690 [main] DEBUG org.apache.http.impl.conn.DefaultHttpClientConnectionOperator -- Connection established 127.0.0.1:50589<->127.0.0.1:3000
-21:13:43.691 [main] DEBUG org.apache.http.impl.conn.DefaultManagedHttpClientConnection -- http-outgoing-0: set socket timeout to 30000
-21:13:43.691 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Executing request GET /config/info/12 HTTP/1.1
-21:13:43.691 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Target auth state: UNCHALLENGED
-21:13:43.691 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Proxy auth state: UNCHALLENGED
-21:13:43.692 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> GET /config/info/12 HTTP/1.1
-21:13:43.692 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> Host: localhost:3000
-21:13:43.692 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> Connection: Keep-Alive
-21:13:43.692 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.14 (Java/23.0.2)
-21:13:43.692 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> Accept-Encoding: gzip,deflate
-21:13:43.692 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "GET /config/info/12 HTTP/1.1[\r][\n]"
-21:13:43.692 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "Host: localhost:3000[\r][\n]"
-21:13:43.692 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
-21:13:43.692 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.14 (Java/23.0.2)[\r][\n]"
-21:13:43.692 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
-21:13:43.692 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "[\r][\n]"
-21:13:43.698 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
-21:13:43.698 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "Content-Type: application/json; charset=utf-8[\r][\n]"
-21:13:43.698 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "Content-Length: 53[\r][\n]"
-21:13:43.698 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "Date: Wed, 20 Aug 2025 14:13:43 GMT[\r][\n]"
-21:13:43.698 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "Connection: keep-alive[\r][\n]"
-21:13:43.698 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "Keep-Alive: timeout=5[\r][\n]"
-21:13:43.698 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "[\r][\n]"
-21:13:43.699 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "{[\n]"
-21:13:43.699 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "  "id_config":"1235435436545",[\n]"
-21:13:43.699 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "  "info_1":"ok la"[\n]"
-21:13:43.699 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "}"
-21:13:43.700 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << HTTP/1.1 200 OK
-21:13:43.700 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << Content-Type: application/json; charset=utf-8
-21:13:43.700 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << Content-Length: 53
-21:13:43.700 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << Date: Wed, 20 Aug 2025 14:13:43 GMT
-21:13:43.700 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << Connection: keep-alive
-21:13:43.700 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << Keep-Alive: timeout=5
-21:13:43.703 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Connection can be kept alive for 5000 MILLISECONDS
-21:13:43.705 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection [id: 0][route: {}->http://localhost:3000] can be kept alive for 5.0 seconds
-21:13:43.705 [main] DEBUG org.apache.http.impl.conn.DefaultManagedHttpClientConnection -- http-outgoing-0: set socket timeout to 0
-21:13:43.705 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection released: [id: 0][route: {}->http://localhost:3000][total available: 1; route allocated: 1 of 5; total allocated: 1 of 10]
-21:13:43.705 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection manager is shutting down
-21:13:43.706 [main] DEBUG org.apache.http.impl.conn.DefaultManagedHttpClientConnection -- http-outgoing-0: Close connection
-21:13:43.707 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection manager shut down
-21:13:43.708 [main] DEBUG com.intuit.karate -- response time in milliseconds: 47
-1 < 200
-1 < Content-Type: application/json; charset=utf-8
-1 < Content-Length: 53
-1 < Date: Wed, 20 Aug 2025 14:13:43 GMT
-1 < Connection: keep-alive
-1 < Keep-Alive: timeout=5
-{
-  "id_config":"1235435436545",
-  "info_1":"ok la"
-}
-
-21:13:43.782 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath -- Evaluating path: $
-21:13:43.794 [main] ERROR com.intuit.karate -- classpath:feature/sample.feature:8
-And match response == {"id_config": "123543543653","info_1": "ok la"}
-match failed: EQUALS
-  $ | not equal | match failed for name: 'id_config' (MAP:MAP)
-  {"id_config":"1235435436545","info_1":"ok la"}
-  {"id_config":"123543543653","info_1":"ok la"}
-
-    $.id_config | not equal (STRING:STRING)
-    '1235435436545'
-    '123543543653'
-
-classpath:feature/sample.feature:8
-]]></system-out>
-  </testcase>
-  <testcase name="runAll[1][2]" classname="TestRunner" time="0.6"/>
 </testsuite>
