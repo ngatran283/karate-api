@@ -14,6 +14,7 @@ stages:
       ADO_PAT: $(PersonalAccessToken)    # secret PAT stored in pipeline
       ADO_TEST_PLAN_ID: '3'          # your Test Plan ID
       ADO_TEST_SUITE_ID: '5'         # optional, target specific suite
+      testReportFile: 'target/surefire-reports/TEST-TestRunner'
     strategy:
       runOnce:
         deploy:
@@ -45,7 +46,7 @@ stages:
             - task: PublishTestResults@2
               inputs:
                 testResultsFormat: 'JUnit'
-                testResultsFiles: 'target/surefire-reports/TEST-*.xml'
+                testResultsFiles: $(testReportFile)
                 testRunTitle: 'Karate Test Run $(Build.BuildId)'
                 mergeTestResults: true
                 publishRunAttachments: true
@@ -68,7 +69,7 @@ stages:
                 ADO_PAT: $(ADO_PAT)
                 ADO_TEST_PLAN_ID: $(ADO_TEST_PLAN_ID)
                 ADO_TEST_SUITE_ID: $(ADO_TEST_SUITE_ID)
-                TEST_REPORT_FILE: 'target/surefire-reports/TEST-*.xml'
+                TEST_REPORT_FILE: $(testReportFile)
                 BUILD_BUILDID: $(Build.BuildId)
               condition:
                 succeededOrFailed()
