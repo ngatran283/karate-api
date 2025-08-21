@@ -34,18 +34,7 @@ stages:
                 mavenVersionOption: 'Default'
             - script: |
                 mvn test
-              displayName: 'Run Karate Tests'
-              
-            - task: PublishTestResults@2
-              inputs:
-                testResultsFormat: 'JUnit'
-                testResultsFiles: $(testReportFile)
-                testRunTitle: 'Karate Test Run $(Build.BuildId)'
-                mergeTestResults: true
-                publishRunAttachments: true
-              condition:
-                succeededOrFailed()                  
-
+              displayName: 'Run Karate Tests'             
             - task: NodeTool@0
               inputs:
                 versionSpec: '20.x'
