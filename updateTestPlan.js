@@ -40,6 +40,7 @@ async function parseJUnitReport(filePath) {
         let outcome = "Passed";
         let errorMessage = "";
         let stackTrace = "";
+        let systemOutput = "";
 
         if (tc.failure) {
             outcome = "Failed";
@@ -58,12 +59,16 @@ async function parseJUnitReport(filePath) {
               ? tc.failure.$.type
               : (tc.failure._ || '');
             }
+            systemOutput = tc['system-out'] || tc['system-out']._ || '';
         }
 
         return {
-            name: name,
+            name,
             outcome,
-            errorMessage
+            errorMessage,
+            stackTrace,
+            systemOutput
+
         };
     });
 
