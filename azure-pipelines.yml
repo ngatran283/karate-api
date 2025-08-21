@@ -34,11 +34,12 @@ stages:
             - script: |
                 mvn test
               displayName: 'Run Karate Tests'
+
             - task: PublishBuildArtifacts@1
               inputs:
-                targetPath: 'target/karate-reports/karate-summary.html'
+                PathtoPublish: 'target/karate-reports/karate-summary.html'
                 ArtifactName: 'Karate Test Html Report $(Build.BuildId)'
-                publishLocation: 'FilePath'
+                publishLocation: 'Container'
               condition:
                 succeededOrFailed()  
             - task: PublishTestResults@2
@@ -53,7 +54,7 @@ stages:
 
             - task: NodeTool@0
               inputs:
-                versionSpec: '18.x'
+                versionSpec: '20.x'
               condition:
                 succeededOrFailed()
             
