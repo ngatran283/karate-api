@@ -49,7 +49,7 @@ async function parseJUnitReport(filePath) {
         }
 
         return {
-            testCaseTitle: name,
+            name: name,
             outcome,
             errorMessage
         };
@@ -151,32 +151,32 @@ console.log("Parsed Results:", results);
 }
 
 // Update test results using point IDs
-async function addTestResults(runId, suites) {
-  const suitePoints = await getTestResults(runId);
+async function addTestResults(runId, testcases) {
+  const points = await getTestResults(runId);
 
   // Map suites to points
 const payload = [];
-for (const point of suitePoints) {
+for (const point of points) {
   // Find matching suite by name (case-insensitive)
-  const suite = suites.find(s => 
+  const testcase = testcases.find(s => 
     s.name.toLowerCase() === (point.title || '').toLowerCase()
   );
 
-  if (!suite) {
+  if (!testcase) {
     console.warn(`⚠️ No matching suite found for test point "${point.title}" (ID ${point.id})`);
     continue;
   }
-  const outcome = suite.failures > 0 ? 'Failed' :
-      suite.skipped > 0 ? 'NotExecuted' : 'Passed';
+  const outcome = testcase.failures > 0 ? 'Failed' :
+  testcase.skipped > 0 ? 'NotExecuted' : 'Passed';
   payload.push({
     id: point.id, // ✅ use pointId, not id
     outcome:
-      suite.failures > 0 ? 'Failed' :
-      suite.skipped > 0 ? 'NotExecuted' : 'Passed',
-    automatedTestName: suite.name,
+      testcase.failures > 0 ? 'Failed' :
+      testcase.skipped > 0 ? 'NotExecuted' : 'Passed',
+    automatedTestName: testcase.name,
     automatedTestType: 'Unit',
-    testCaseTitle: suite.name,
-    errorMessage: outcome!=='Passed'?suite.testcases
+    testCaseTitle: testcase.name,
+    errorMessage: outcome!=='Passed'?testcase.testcases
     .map(tc => `${tc.name} | ${tc.classname} | ${tc.status}${tc.failureMessage ? ` | ${tc.failureMessage}` : ''}`)
     .join('\n'): '',
     state:'Completed'
