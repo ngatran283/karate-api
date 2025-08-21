@@ -9,21 +9,7 @@
     <script type="text/javascript" src="res/jquery.min.js"></script>
     <script type="text/javascript" src="res/jquery.tablesorter.min.js"></script>
     <script type="text/javascript" src="res/bootstrap.min.js"></script>
-    <script type="text/javascript" src="res/karate-report.js"></script>
-    <script>
-!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
-  api_host:'https://app.posthog.com',
-  persistence:'localStorage',
-  autocapture:false,
-  capture_pageview:false,
-  api_transport:'sendBeacon',
-  loaded: function(posthog) { 
-    posthog.capture("report_summary",{distinct_id:"b36c65ee-ce47-4ab0-91c4-a98dbd126a65",karate_version:"1.4.1",karate_meta:null});
-  }
-});
-</script>
-
+    <script type="text/javascript" src="res/karate-report.js"></script>    
     <title>Karate Summary Report</title>
   </head>
   <body>
@@ -36,8 +22,8 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
       <img src="karate-labs-logo-ring.svg" alt="Karate Labs"/>
     </a>
     <div class="nav-count">
-      <div id="nav-pass" class="bg-success">0</div>
-      <div id="nav-fail" class="bg-danger">1</div>
+      <div id="nav-pass" class="bg-success">2</div>
+      <div id="nav-fail" class="bg-danger">0</div>
     </div>
   </div>
   <div id="nav-env">
@@ -47,7 +33,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
     <div>Features</div>
   </div>
   <div id="nav-date">
-    <div>2025-08-20 09:16:30 PM</div>
+    <div>2025-08-21 04:36:29 PM</div>
   </div>
 </div>
 
@@ -69,15 +55,25 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
             </tr>
           </thead>
           <tbody>
-            <tr class="failed">
+            <tr class="passed">
               <td>
-                <a href="feature.sample.html">feature/sample.feature</a>
+                <a href="features.sample copy.html">features/sample copy.feature</a>
               </td>
               <td>Sample Karate Test</td>
-              <td class="num">1</td>
-              <td class="num">1</td>
               <td class="num">2</td>
-              <td class="num">388</td>
+              <td class="num">0</td>
+              <td class="num">2</td>
+              <td class="num">479</td>
+            </tr>
+            <tr class="passed">
+              <td>
+                <a href="features.sample.html">features/sample.feature</a>
+              </td>
+              <td>Sample Karate Test</td>
+              <td class="num">2</td>
+              <td class="num">0</td>
+              <td class="num">2</td>
+              <td class="num">27</td>
             </tr>
           </tbody>
         </table>

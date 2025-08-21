@@ -7,6 +7,13 @@ stages:
     environment: 'QA-Test-Env'
     pool:
       name: 'Default'
+    variables:
+      # Azure DevOps configuration
+      ADO_ORG: 'ngatran283'                  # your Azure DevOps org
+      ADO_PROJECT: 'demo'          # your Azure DevOps project
+      ADO_PAT: $(PersonalAccessToken)    # secret PAT stored in pipeline
+      ADO_TEST_PLAN_ID: '3'          # your Test Plan ID
+      ADO_TEST_SUITE_ID: '5'         # optional, target specific suite
     strategy:
       runOnce:
         deploy:
@@ -29,6 +36,13 @@ stages:
                 mvn test
               displayName: 'Run Karate Tests'
 
+            - task: PublishHtmlReport@1
+              inputs:
+                reportDir: 'target/karate-reports'
+                reportTitle: 'Karate Test Html Report $(Build.BuildId)'
+                condition:
+                  succeededOrFailed()   
+
             - task: PublishTestResults@2
               inputs:
                 testResultsFormat: 'JUnit'
@@ -42,5 +56,20 @@ stages:
             - task: NodeTool@0
               inputs:
                 versionSpec: '18.x'
+              condition:
+                succeededOrFailed()
+            
+            # 5️⃣ Update Azure DevOps Test Plan with Karate results
+            - script: |
+                node updateTestPlan.js
+              displayName: 'Update Azure DevOps Test Plan with Karate Results'
+              env:
+                ADO_ORG: $(ADO_ORG)
+                ADO_PROJECT: $(ADO_PROJECT)
+                ADO_PAT: $(ADO_PAT)
+                ADO_TEST_PLAN_ID: $(ADO_TEST_PLAN_ID)
+                ADO_TEST_SUITE_ID: $(ADO_TEST_SUITE_ID)
+                TEST_REPORT_FILE: 'target/surefire-reports/TEST-*.xml'
+                BUILD_BUILDID: $(Build.BuildId)
               condition:
                 succeededOrFailed()
