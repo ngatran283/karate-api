@@ -2,7 +2,8 @@
 
 import fs from 'fs';
 import path from 'path';
-import AdmZip from 'adm-zip';
+const AdmZip = require('adm-zip');
+const fetch = require('node-fetch');
 import { parseStringPromise } from 'xml2js';
 
 // Environment variables from pipeline
