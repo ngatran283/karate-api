@@ -2,6 +2,7 @@
 
 import fs from 'fs';
 import path from 'path';
+const AdmZip = require('adm-zip');
 import { parseStringPromise } from 'xml2js';
 
 // Environment variables from pipeline
@@ -11,7 +12,7 @@ const ADO_PAT = process.env.ADO_PAT;
 const ADO_TEST_PLAN_ID = process.env.ADO_TEST_PLAN_ID;
 const ADO_TEST_SUITE_ID = process.env.ADO_TEST_SUITE_ID; // optional
 const TEST_REPORT_FILE = process.env.TEST_REPORT_FILE;
-const TEST_REPORT_HTML_FILE = process.env.TEST_REPORT_HTML_FILE;
+const TEST_REPORT_HTML_FOLDER = process.env.TEST_REPORT_HTML_FOLDER;
 const BUILD_BUILDID = process.env.BUILD_BUILDID;
 
 if (!ADO_ORG || !ADO_PROJECT || !ADO_PAT || !ADO_TEST_PLAN_ID || !TEST_REPORT_FILE) {
@@ -141,6 +142,48 @@ async function addRunAttachmentResult(runId, pointId, formData) {
   });
 
   if (!res.ok) throw new Error(`Failed to attach file: ${res.status} ${await res.text()}`);
+  return res.json();
+}
+
+// ---------------------------
+// Upload folder as ZIP
+// ---------------------------
+async function addRunAttachmentFolder(runId, folderPath, attachmentName = 'karate-reports.zip') {
+  // Step 1: Zip the folder
+  const zip = new AdmZip();
+  zip.addLocalFolder(folderPath);
+
+  const zipFilePath = path.join(__dirname, attachmentName);
+  zip.writeZip(zipFilePath);
+
+  // Step 2: Read ZIP file
+  const content = fs.readFileSync(zipFilePath);
+
+  // Step 3: Prepare JSON payload
+  const formData = {
+    stream: content.toString('base64'),
+    fileName: attachmentName,
+    comment: 'Karate Test Report',
+    attachmentType: 'GeneralAttachment',
+  };
+
+  // Step 4: POST to Azure DevOps
+  const url = `${baseUrl}/test/runs/${runId}/attachments?api-version=7.1`;
+
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Authorization': authHeader(),
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to attach file: ${res.status} ${await res.text()}`);
+  }
+
+  console.log(`Attachment uploaded: ${attachmentName}`);
   return res.json();
 }
 
@@ -280,7 +323,7 @@ async function completeTestRun(runId) {
 
     console.log('Attaching JUnit report...');
     await addRunAttachmentRun(run.id, TEST_REPORT_FILE);
-    await addRunAttachmentRun(run.id, TEST_REPORT_HTML_FILE);
+    await addRunAttachmentFolder(run.id, TEST_REPORT_HTML_FOLDER);
     console.log('✅ JUnit report attached.');
 
     console.log('Uploading test results...');

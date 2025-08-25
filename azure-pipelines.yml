@@ -30,7 +30,7 @@ stages:
         ADO_PROJECT: 'demo'
         ADO_PAT: $(PersonalAccessToken)
         testReportFile: 'target/surefire-reports/TEST-TestRunner.xml'
-        testReportHtmlFile: 'target/karate-reports/karate-summary.html'
+        testReportHtmlFile: 'target/karate-reports'
       strategy:
         runOnce:
           deploy:
@@ -71,5 +71,5 @@ stages:
                   ADO_TEST_PLAN_ID: ${{ parameters.adoTestPlanId }}
                   ADO_TEST_SUITE_ID: ${{ parameters.adoTestSuiteId }}
                   TEST_REPORT_FILE: $(testReportFile)
-                  TEST_REPORT_HTML_FILE: $(testReportHtmlFile)
+                  TEST_REPORT_HTML_FOLDER: $(testReportHtmlFile)
                   BUILD_BUILDID: $(Build.BuildId)
