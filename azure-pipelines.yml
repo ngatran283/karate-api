@@ -1,4 +1,3 @@
-trigger: none
 - stage: Test
   displayName: 'Run Karate Tests'
   dependsOn: Build
