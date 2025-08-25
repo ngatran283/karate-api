@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import fs from 'fs';
-import path from 'path';
-import AdmZip from 'adm-zip';
-import fetch from 'node-fetch';
-import { parseStringPromise } from 'xml2js';
+const fs = require('fs');
+const path = require('path');
+const AdmZip = require('adm-zip');
+const fetch = require('node-fetch');
+const { parseStringPromise } = require('xml2js');
 
 // Environment variables from pipeline
 const ADO_ORG = process.env.ADO_ORG;
