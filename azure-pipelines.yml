@@ -1,56 +1,4 @@
 trigger: none
-
-parameters:
-- name: tcmRunId
-  type: string
-  default: ''
-  displayName: 'Test Run ID (leave empty for all tests)'
-
-- name: karateTags
-  type: string
-  default: '@smoke'
-  displayName: 'Karate Tags (e.g., @smoke, @regression)'
-
-- name: adoTestPlanId
-  type: string
-  default: '3'
-  displayName: 'Azure DevOps Test Plan ID'
-
-- name: adoTestSuiteId
-  type: string
-  default: '5'
-  displayName: 'Azure DevOps Test Suite ID (optional)'
-
-stages:
-
-# ---------------------------
-# Stage 1: Build
-# ---------------------------
-- stage: Build
-  displayName: "Build Stage"
-  jobs:
-    - job: BuildJob
-      displayName: "Compile and Package"
-      pool:
-        name: 'Default'
-      steps:
-        - checkout: self
-
-        # Maven build
-        - task: Maven@4
-          displayName: 'Maven Build (skip tests)'
-          inputs:
-            mavenPomFile: 'pom.xml'
-            goals: 'clean install -DskipTests'
-            mavenVersionOption: 'Default'
-
-        # Publish build artifact
-        - publish: $(System.DefaultWorkingDirectory)/target
-          artifact: drop
-
-# ---------------------------
-# Stage 2: Test
-# ---------------------------
 - stage: Test
   displayName: 'Run Karate Tests'
   dependsOn: Build
@@ -59,7 +7,7 @@ stages:
       displayName: 'Execute Karate Tests'
       environment: 'QA-Test-Env'
       pool:
-        name: 'Default'
+        vmImage: 'ubuntu-latest'   # Ubuntu agent avoids vstest demand
       variables:
         ADO_ORG: 'ngatran283'
         ADO_PROJECT: 'demo'
@@ -84,33 +32,23 @@ stages:
 
               # Setup Java
               - script: |
-                  echo "Setting JAVA_HOME to Oracle JDK 17"
-                  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home
+                  echo "Setting up Java 17"
+                  sudo apt-get update
+                  sudo apt-get install -y openjdk-17-jdk
+                  export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
                   export PATH=$JAVA_HOME/bin:$PATH
                   java --version
                 displayName: 'Setup Java 17'
 
-              # Run tests from Azure Test Plan if tcmRunId is provided
-              - ${{ if ne(parameters.tcmRunId, '') }}:
-                - task: VSTest@2
-                  displayName: 'Run Tests from Azure Test Plan'
-                  inputs:
-                    testSelector: 'testPlan'
-                    tcmRunId: ${{ parameters.tcmRunId }}
-                    searchFolder: '$(System.DefaultWorkingDirectory)'
-                    vsTestVersion: 'latest'
+              # Run Karate tests using Maven
+              - script: |
+                  mvn test -Dkarate.options="--tags ${{ parameters.karateTags }}"
+                displayName: 'Run Karate Tests'
 
-              # Run Karate tests if no tcmRunId provided
-              - ${{ if eq(parameters.tcmRunId, '') }}:
-                - script: |
-                    mvn test -Dkarate.options="--tags ${{ parameters.karateTags }}"
-                  displayName: 'Run Karate Tests'
-
-              # Optional Node.js script for updating Test Plan
+              # Optional Node.js script
               - task: NodeTool@0
                 inputs:
                   versionSpec: '20.x'
-                condition: succeededOrFailed()
               - script: |
                   node updateTestPlan.js
                 displayName: 'Update Azure DevOps Test Plan with Karate Results'
@@ -123,4 +61,3 @@ stages:
                   TEST_REPORT_FILE: $(testReportFile)
                   TEST_REPORT_HTML_FILE: $(testReportHtmlFile)
                   BUILD_BUILDID: $(Build.BuildId)
-                condition: succeededOrFailed()
