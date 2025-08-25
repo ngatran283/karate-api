@@ -64,7 +64,7 @@ stages:
                 condition:
                   succeededOrFailed()
               - script: |
-                  npm install adm-zip node-fetch
+                  npm install
                 displayName: 'Install Node.js dependencies'
                 condition:
                   succeededOrFailed()
