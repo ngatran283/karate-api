@@ -61,8 +61,13 @@ stages:
               - task: NodeTool@0
                 inputs:
                   versionSpec: '20.x'
-                  condition:
-                    succeededOrFailed()
+                condition:
+                  succeededOrFailed()
+              - script: |
+                  npm install
+                displayName: 'Install Node.js dependencies'
+                condition:
+                  succeededOrFailed()
               - script: |
                   node updateTestPlan.js
                 displayName: 'Update Azure DevOps Test Plan with Karate Results'
