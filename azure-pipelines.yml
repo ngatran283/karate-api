@@ -3,7 +3,7 @@ trigger: none
 parameters:
 - name: karateTags
   type: string
-  default: '@smoke'
+  default: '@Smoke'
   displayName: 'Karate Tags (e.g., @smoke, @regression)'
 
 - name: adoTestPlanId
@@ -61,6 +61,8 @@ stages:
               - task: NodeTool@0
                 inputs:
                   versionSpec: '20.x'
+                  condition:
+                    succeededOrFailed()
               - script: |
                   node updateTestPlan.js
                 displayName: 'Update Azure DevOps Test Plan with Karate Results'
@@ -73,3 +75,5 @@ stages:
                   TEST_REPORT_FILE: $(testReportFile)
                   TEST_REPORT_HTML_FOLDER: $(testReportHtmlFile)
                   BUILD_BUILDID: $(Build.BuildId)
+                condition:
+                  succeededOrFailed()
