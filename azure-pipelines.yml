@@ -1,12 +1,30 @@
+trigger: none
+
+parameters:
+- name: karateTags
+  type: string
+  default: '@smoke'
+  displayName: 'Karate Tags (e.g., @smoke, @regression)'
+
+- name: adoTestPlanId
+  type: string
+  default: '3'
+  displayName: 'Azure DevOps Test Plan ID'
+
+- name: adoTestSuiteId
+  type: string
+  default: '5'
+  displayName: 'Azure DevOps Test Suite ID (optional)'
+
+stages:
 - stage: Test
   displayName: 'Run Karate Tests'
-  dependsOn: Build
   jobs:
     - deployment: RunKarate
       displayName: 'Execute Karate Tests'
       environment: 'QA-Test-Env'
       pool:
-        vmImage: 'ubuntu-latest'   # Ubuntu agent avoids vstest demand
+        vmImage: 'ubuntu-latest'
       variables:
         ADO_ORG: 'ngatran283'
         ADO_PROJECT: 'demo'
@@ -17,21 +35,15 @@
         runOnce:
           deploy:
             steps:
-              - download: current
-                artifact: drop
+              - checkout: self
 
               # Show execution mode
               - script: |
-                  if [ "${{ parameters.tcmRunId }}" != "" ]; then
-                    echo "Running from Azure Test Plan Run ID: ${{ parameters.tcmRunId }}"
-                  else
-                    echo "Running all Karate tests with tags: ${{ parameters.karateTags }}"
-                  fi
+                  echo "Running Karate tests with tags: ${{ parameters.karateTags }}"
                 displayName: 'Show Execution Mode'
 
               # Setup Java
               - script: |
-                  echo "Setting up Java 17"
                   sudo apt-get update
                   sudo apt-get install -y openjdk-17-jdk
                   export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
