@@ -24,7 +24,7 @@ stages:
       displayName: 'Execute Karate Tests'
       environment: 'QA-Test-Env'
       pool:
-        vmImage: 'ubuntu-latest'
+        name: 'Default'
       variables:
         ADO_ORG: 'ngatran283'
         ADO_PROJECT: 'demo'
