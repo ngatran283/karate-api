@@ -2,7 +2,7 @@
 
 import fs from 'fs';
 import path from 'path';
-const AdmZip = require('adm-zip');
+import AdmZip from 'adm-zip';
 import { parseStringPromise } from 'xml2js';
 
 // Environment variables from pipeline
@@ -149,19 +149,13 @@ async function addRunAttachmentResult(runId, pointId, formData) {
 // Upload folder as ZIP
 // ---------------------------
 async function addRunAttachmentFolder(runId, folderPath, attachmentName = 'karate-reports.zip') {
-  // Step 1: Zip the folder
   const zip = new AdmZip();
   zip.addLocalFolder(folderPath);
+  const zipBuffer = zip.toBuffer();
 
-  const zipFilePath = path.join(__dirname, attachmentName);
-  zip.writeZip(zipFilePath);
-
-  // Step 2: Read ZIP file
-  const content = fs.readFileSync(zipFilePath);
-
-  // Step 3: Prepare JSON payload
+  // Convert buffer to base64
   const formData = {
-    stream: content.toString('base64'),
+    stream: zipBuffer.toString('base64'),
     fileName: attachmentName,
     comment: 'Karate Test Report',
     attachmentType: 'GeneralAttachment',
