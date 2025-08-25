@@ -1,0 +1,104 @@
+trigger: none
+
+parameters:
+- name: tcmRunId
+  type: string
+  default: ''
+  displayName: 'Test Run ID (leave empty for all tests)'
+
+- name: karateTags
+  type: string
+  default: '@smoke'
+  displayName: 'Karate Tags (e.g., @smoke, @regression)'
+
+- name: adoTestPlanId
+  type: string
+  default: '3'
+  displayName: 'Azure DevOps Test Plan ID'
+
+- name: adoTestSuiteId
+  type: string
+  default: '5'
+  displayName: 'Azure DevOps Test Suite ID (optional)'
+
+stages:
+- stage: Test
+  displayName: 'Run Karate Tests'
+  jobs:
+  - deployment: RunKarate
+    displayName: 'Execute Karate Tests'
+    environment: 'QA-Test-Env'
+    pool:
+      name: 'Default'
+    variables:
+      # Azure DevOps configuration
+      ADO_ORG: 'ngatran283'                  # your Azure DevOps org
+      ADO_PROJECT: 'demo'          # your Azure DevOps project
+      ADO_PAT: $(PersonalAccessToken)    # secret PAT stored in pipeline
+      testReportFile: 'target/surefire-reports/TEST-TestRunner.xml'
+      testReportHtmlFile: 'target/karate-reports/karate-summary.html'
+
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - checkout: self
+            # ✅ Show execution mode
+            - script: |
+                if [ "${{ parameters.tcmRunId }}" != "" ]; then
+                  echo "Running from Azure Test Plan Run ID: ${{ parameters.tcmRunId }}"
+                else
+                  echo "Running all Karate tests with tags: ${{ parameters.karateTags }}"
+                fi
+              displayName: 'Show Execution Mode'
+
+            # ✅ Setup Java
+            - script: |
+                  echo "Setting JAVA_HOME to Oracle JDK 17"
+                  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home
+                  export PATH=$JAVA_HOME/bin:$PATH
+                  java --version
+            - task: Maven@4
+              displayName: 'Maven Build'
+              inputs:
+                mavenPomFile: 'pom.xml'
+                goals: 'clean install -DskipTests'
+                mavenVersionOption: 'Default'
+
+            # ✅ Run tests based on mode
+            # Run from Test Plan if tcmRunId is provided
+            - ${{ if ne(parameters.tcmRunId, '') }}:
+              - task: VSTest@2
+                displayName: 'Run Tests from Azure Test Plan'
+                inputs:
+                  testSelector: 'testPlan'
+                  tcmRunId: ${{ parameters.tcmRunId }}
+                  searchFolder: '$(System.DefaultWorkingDirectory)'
+                  vsTestVersion: 'latest'
+
+            # Run Karate tests if no tcmRunId (manual run)
+            - ${{ if eq(parameters.tcmRunId, '') }}:
+              - script: |
+                  mvn test -Dkarate.options="--tags ${{ parameters.karateTags }}"
+                displayName: 'Run Karate Tests'
+            - task: NodeTool@0
+              inputs:
+                versionSpec: '20.x'
+              condition:
+                succeededOrFailed()
+            
+            # 5️⃣ Update Azure DevOps Test Plan with Karate results
+            - script: |
+                node updateTestPlan.js
+              displayName: 'Update Azure DevOps Test Plan with Karate Results'
+              env:
+                ADO_ORG: $(ADO_ORG)
+                ADO_PROJECT: $(ADO_PROJECT)
+                ADO_PAT: $(ADO_PAT)
+                ADO_TEST_PLAN_ID: ${{ parameters.adoTestPlanId }}
+                ADO_TEST_SUITE_ID: ${{ parameters.adoTestSuiteId }}
+                TEST_REPORT_FILE: $(testReportFile)
+                TEST_REPORT_HTML_FILE: $(testReportHtmlFile)
+                BUILD_BUILDID: $(Build.BuildId)
+              condition:
+                succeededOrFailed()

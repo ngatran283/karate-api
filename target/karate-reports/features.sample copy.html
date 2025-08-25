@@ -21,12 +21,12 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   capture_pageview:false,
   api_transport:'sendBeacon',
   loaded: function(posthog) { 
-    posthog.capture("report_feature",{distinct_id:"b36c65ee-ce47-4ab0-91c4-a98dbd126a65",karate_version:"1.4.1",karate_meta:null});
+    posthog.capture("report_feature",{distinct_id:"b36c65ee-ce47-4ab0-91c4-a98dbd126a65",karate_version:"1.5.0",karate_meta:null});
   }
 });
 </script>
 
-    <title>feature.sample</title>
+    <title>features.sample copy</title>
   </head>
   <body>
     <div id="root-container">
@@ -38,8 +38,8 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
       <img src="karate-labs-logo-ring.svg" alt="Karate Labs"/>
     </a>
     <div class="nav-count">
-      <div id="nav-pass" class="bg-success">1</div>
-      <div id="nav-fail" class="bg-danger">1</div>
+      <div id="nav-pass" class="bg-success">2</div>
+      <div id="nav-fail" class="bg-danger">0</div>
     </div>
   </div>
   <div id="nav-env">
@@ -49,16 +49,16 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
     <div>Scenarios</div>
   </div>
   <div id="nav-date">
-    <div>2025-08-20 09:16:29 PM</div>
+    <div>2025-08-21 04:36:28 PM</div>
   </div>
 </div>
 
         <div class="nav-container">
-          <div class="nav-item failed">
+          <div class="nav-item passed">
             <a href="#[1:4]"><span>[1:4]</span> <span>get detail config info</span></a>
           </div>
           <div class="nav-item passed">
-            <a href="#[2:11]"><span>[2:11]</span> <span>get master config</span></a>
+            <a href="#[2:10]"><span>[2:10]</span> <span>get master config</span></a>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
           <a href="karate-summary.html">Summary</a><span class="feature-label">|</span>
           <a href="karate-tags.html">Tags</a><span class="feature-label">|</span>
           <span class="feature-label">Feature:</span>
-          <span class="feature-path">feature/sample.feature</span><span class="feature-label">|</span>
+          <span class="feature-path">features/sample copy.feature</span><span class="feature-label">|</span>
           <span class="feature-name">Sample Karate Test</span>
           <span class="feature-description"></span>
         </div>
@@ -83,8 +83,8 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
                 <span></span>
               </div>
             </div>
-            <div class="scenario-time failed">
-              <span>ms:</span>&nbsp;<span>372</span>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>463</span>
             </div>
           </div>
           
@@ -101,7 +101,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>Given</span>&nbsp;<span>url &#39;http://localhost:3000/config/info/12&#39;</span>
       </div>
     </div>
-    <div class="time-cell passed">58</div>
+    <div class="time-cell passed">77</div>
   </div>
 
    
@@ -129,7 +129,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method get</span>
       </div>
     </div>
-    <div class="time-cell passed">253</div>
+    <div class="time-cell passed">382</div>
   </div>
 
    
@@ -138,19 +138,19 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="0.6">21:16:28.995 request:
+  <div class="preformatted" data-parent="0.6">16:36:28.295 request:
 1 &gt; GET http://localhost:3000/config/info/12
 1 &gt; Host: localhost:3000
 1 &gt; Connection: Keep-Alive
-1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/23.0.2)
 1 &gt; Accept-Encoding: gzip,deflate
 
 
-21:16:29.034 response time in milliseconds: 34
+16:36:28.358 response time in milliseconds: 56
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=utf-8
 1 &lt; Content-Length: 53
-1 &lt; Date: Wed, 20 Aug 2025 14:16:29 GMT
+1 &lt; Date: Thu, 21 Aug 2025 09:36:28 GMT
 1 &lt; Connection: keep-alive
 1 &lt; Keep-Alive: timeout=5
 {
@@ -177,7 +177,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>Then</span>&nbsp;<span>status 200</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">4</div>
   </div>
 
    
@@ -192,61 +192,21 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
 </div>
 </div>
-          <div><div>
-  
-
-  
-
-  <div class="step-row">
-    <div class="step-container" id="0.8">
-      <div class="step-ref failed">8</div>
-      
-      <div class="step-cell failed">
-        <span>And</span>&nbsp;<span>match response == {&quot;id_config&quot;: &quot;123543543653&quot;,&quot;info_1&quot;: &quot;ok la&quot;}</span>
-      </div>
-    </div>
-    <div class="time-cell failed">61</div>
-  </div>
-
-   
-  
-  
-
-  
-
-  <div class="preformatted" data-parent="0.8">21:16:29.124 classpath:feature/sample.feature:8
-And match response == {&quot;id_config&quot;: &quot;123543543653&quot;,&quot;info_1&quot;: &quot;ok la&quot;}
-match failed: EQUALS
-  $ | not equal | match failed for name: &#39;id_config&#39; (MAP:MAP)
-  {&quot;id_config&quot;:&quot;1235435436545&quot;,&quot;info_1&quot;:&quot;ok la&quot;}
-  {&quot;id_config&quot;:&quot;123543543653&quot;,&quot;info_1&quot;:&quot;ok la&quot;}
-
-    $.id_config | not equal (STRING:STRING)
-    &#39;1235435436545&#39;
-    &#39;123543543653&#39;
-
-classpath:feature/sample.feature:8
-</div>   
-
-  
-
-</div>
-</div>
         </div>
         <div class="scenario">
-          <div class="scenario-heading" id="[2:11]">
+          <div class="scenario-heading" id="[2:10]">
             <div class="heading-container">
               <div class="scenario-tags">
                 <a class="badge badge-primary" href="karate-tags.html">TEST_CASE_2</a><a class="badge badge-primary" href="karate-tags.html">Smoke</a>
               </div>
               <div class="scenario-keyword">
-                Scenario: <span>[2:11]</span>
+                Scenario: <span>[2:10]</span>
                 <span class="scenario-name">get master config</span>
                 <span></span>
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>17</span>
+              <span>ms:</span>&nbsp;<span>16</span>
             </div>
           </div>
           
@@ -256,14 +216,14 @@ classpath:feature/sample.feature:8
   
 
   <div class="step-row">
-    <div class="step-container" id="0.12">
-      <div class="step-ref passed">12</div>
+    <div class="step-container" id="0.11">
+      <div class="step-ref passed">11</div>
       
       <div class="step-cell passed">
         <span>Given</span>&nbsp;<span>url &#39;http://localhost:3000/masters/config&#39;</span>
       </div>
     </div>
-    <div class="time-cell passed">2</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -284,8 +244,8 @@ classpath:feature/sample.feature:8
   
 
   <div class="step-row">
-    <div class="step-container" id="0.13">
-      <div class="step-ref passed">13</div>
+    <div class="step-container" id="0.12">
+      <div class="step-ref passed">12</div>
       
       <div class="step-cell passed">
         <span>When</span>&nbsp;<span>method get</span>
@@ -300,19 +260,19 @@ classpath:feature/sample.feature:8
 
   
 
-  <div class="preformatted" data-parent="0.13">21:16:29.165 request:
+  <div class="preformatted" data-parent="0.12">16:36:28.426 request:
 1 &gt; GET http://localhost:3000/masters/config
 1 &gt; Host: localhost:3000
 1 &gt; Connection: Keep-Alive
-1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/23.0.2)
 1 &gt; Accept-Encoding: gzip,deflate
 
 
-21:16:29.174 response time in milliseconds: 8
+16:36:28.437 response time in milliseconds: 10
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=utf-8
 1 &lt; Content-Length: 57
-1 &lt; Date: Wed, 20 Aug 2025 14:16:29 GMT
+1 &lt; Date: Thu, 21 Aug 2025 09:36:28 GMT
 1 &lt; Connection: keep-alive
 1 &lt; Keep-Alive: timeout=5
 {
@@ -332,8 +292,8 @@ classpath:feature/sample.feature:8
   
 
   <div class="step-row">
-    <div class="step-container" id="0.14">
-      <div class="step-ref passed">14</div>
+    <div class="step-container" id="0.13">
+      <div class="step-ref passed">13</div>
       
       <div class="step-cell passed">
         <span>Then</span>&nbsp;<span>status 200</span>

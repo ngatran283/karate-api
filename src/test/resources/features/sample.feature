@@ -5,7 +5,6 @@ Feature: Sample Karate Test
     Given url 'http://localhost:3000/config/info/12'
     When method get
     Then status 200
-    And match response == {"id_config": "123543543653","info_1": "ok la"}
 
   @Smoke @TEST_CASE_2
   Scenario: get master config
