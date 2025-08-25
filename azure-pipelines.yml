@@ -40,17 +40,18 @@ stages:
               # Show execution mode
               - script: |
                   echo "Running Karate tests with tags: ${{ parameters.karateTags }}"
-                displayName: 'Show Execution Mode'
-
-              # Setup Java
+                displayName: 'Show Execution Mode'            
               - script: |
-                  sudo apt-get update
-                  sudo apt-get install -y openjdk-17-jdk
-                  export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+                  echo "Setting JAVA_HOME to Oracle JDK 17"
+                  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home
                   export PATH=$JAVA_HOME/bin:$PATH
                   java --version
-                displayName: 'Setup Java 17'
-
+              - task: Maven@4
+                displayName: 'Maven Build'
+                inputs:
+                  mavenPomFile: 'pom.xml'
+                  goals: 'clean install -DskipTests'
+                  mavenVersionOption: 'Default'
               # Run Karate tests using Maven
               - script: |
                   mvn test -Dkarate.options="--tags ${{ parameters.karateTags }}"
