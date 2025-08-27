@@ -37,7 +37,7 @@ async function parseJUnitReport(filePath) {
   if (!Array.isArray(testcases)) testcases = [testcases];
 
     return testcases.map(tc => {
-        let name = tc.$.name.replace(/^\[\d+\.\d+:\d+\]\s*/, '') // remove [1:4]
+        let name = tc.$.name.replace(^\[.*\]$, '') // remove [1:4]
         let outcome = "Passed";
         let errorMessage = "";
         let stackTrace = "";
