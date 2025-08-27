@@ -1,6 +1,10 @@
 @ignore
 Feature: Reset a Product Configuration
 
+Background:
+    * url comOccHostname
+    * headers commonHeader
+    
 @Reset_Product_Config
 Scenario: Reset a Product Configuration
     * def allParams = karate.merge(commonParams, { 'productCode': productCode})

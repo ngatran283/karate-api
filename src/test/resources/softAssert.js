@@ -25,6 +25,18 @@ function SoftAssert() {
     },
     getErrors: function() {
       return errors;
+    },
+    safeCall: function(featurePath, args){
+      var res;
+      try {
+          res = karate.call(featurePath,args);
+      } catch(e) {
+          var errMsg = e.message ? e.message : e;
+          karate.log('Nested feature failed but continuing. Error:', errMsg);
+          res = { response: null, error: errMsg };
+      }
+      karate.log(res);
+      return res;
     }
   };
 }

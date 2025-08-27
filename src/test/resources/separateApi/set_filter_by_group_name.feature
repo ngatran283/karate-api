@@ -2,8 +2,8 @@
 Feature: Set Filter By Group Name
 
 Background:
-    * url 'http://localhost:3000'
-    * headers {Accept: 'application/json',Authorization: 'Bearer '}
+    * url comOccHostname
+    * headers commonHeader
     
 @Set_Filter_By_Group_Name
 Scenario: Set Filter By Group Name
@@ -12,4 +12,3 @@ Scenario: Set Filter By Group Name
     And params allParams
     When method patch
     Then status 200
-    #And match karate.keysOf(response.data).length > 0

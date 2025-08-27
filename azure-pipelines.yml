@@ -3,7 +3,7 @@ trigger: none
 parameters:
 - name: karateTags
   type: string
-  default: '@Smoke'
+  default: '@Update_All_Group_Of_Product1'
   displayName: 'Karate Tags (e.g., @smoke, @regression)'
 
 - name: adoTestPlanId

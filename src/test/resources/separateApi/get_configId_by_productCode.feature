@@ -2,8 +2,8 @@
 Feature: Get Configuration Id
 
 Background:
-    * url 'http://localhost:3000'
-    * headers {Accept: 'application/json',Authorization: 'Bearer '}
+    * url comOccHostname
+    * headers commonHeader
     
 @Get_ConfigId_Of_Product_Code
 Scenario: Get configuration Id of Product Code

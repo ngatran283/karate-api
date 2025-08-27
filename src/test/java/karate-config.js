@@ -5,8 +5,8 @@ function fn() {
     var cp = java.lang.System.getProperty('java.class.path');
     karate.log('Classpath:', cp);
     karate.log('[print]', 'Hostname:', config.comOccHostname);
-    var result = karate.callSingle('classpath:features/separateApi/auth.feature@Auth');
-    config.authToken = result.token;
+    var result = karate.callSingle('classpath:separateApi/auth.feature@Auth');
+    config.authToken = result.response.token;
     config.commonHeader = {
         Accept: 'application/json',
         Authorization: 'Bearer ' + config.authToken
