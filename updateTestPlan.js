@@ -37,7 +37,7 @@ async function parseJUnitReport(filePath) {
   if (!Array.isArray(testcases)) testcases = [testcases];
 
     return testcases.map(tc => {
-        let name = tc.$.name.replace(/^\[\d+:\d+\]\s*/, ''); // remove [1:4]
+        let name = tc.$.name.replace(/^\[\d+\.\d+:\d+\]\s*/, '') // remove [1:4]
         let outcome = "Passed";
         let errorMessage = "";
         let stackTrace = "";
@@ -57,7 +57,7 @@ async function parseJUnitReport(filePath) {
               ? tc.failure.$.message : (tc.failure._ || '');
               stackTrace = (tc.failure._ || '');
             }
-            systemOutput = tc['system-out'];
+            systemOutput = tc['system-out'][0];
         }
 
         return {
@@ -246,7 +246,7 @@ for (const point of points) {
     state:'Completed'
   });
 
-  if(testcase.outcome!=='Passed'&&!testcase.systemOutput){
+  if(testcase.outcome!=='Passed'){
     console.log("Console: "+testcase.systemOutput)
     payloadAttachment.push({
       pointId: point.id, // ✅ use pointId, not id
