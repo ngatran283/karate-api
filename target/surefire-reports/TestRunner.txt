@@ -1,58 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: TestRunner
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 2.920 s <<< FAILURE! -- in TestRunner
-features/sample.[1:4] get detail config info -- Time elapsed: 0.256 s <<< FAILURE!
-org.opentest4j.AssertionFailedError: 
-status code was: 204, expected: 200, response time in milliseconds: 37, url: http://localhost:3000/config/info/12, response: 
-
-classpath:features/sample.feature:7
-	at com.intuit.karate.junit5.FeatureNode.lambda$next$1(FeatureNode.java:86)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:215)
-	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:215)
-	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)
-	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1939)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
-	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
-	at java.base/java.util.stream.ReferencePipeline.forEachOrdered(ReferencePipeline.java:641)
-	at java.base/java.util.Optional.ifPresent(Optional.java:178)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-
-features/update_product.[1.1:39] Update All Group of Product HANSET4_MONOBLC 1 -- Time elapsed: 0.167 s <<< FAILURE!
+Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 4.197 s <<< FAILURE! -- in TestRunner
+update_product.[1.4:46] Update All Group of Product MOCHI World -- Time elapsed: 1.006 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Soft assert failures:
-Fail - group name:GroupA material codeM001
-Fail - group name:GroupB material codeM002
-classpath:features/update_product.feature:35
-	at com.intuit.karate.junit5.FeatureNode.lambda$next$1(FeatureNode.java:86)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:215)
-	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:215)
-	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)
-	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1939)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
-	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
-	at java.base/java.util.stream.ReferencePipeline.forEachOrdered(ReferencePipeline.java:641)
-	at java.base/java.util.Optional.ifPresent(Optional.java:178)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-
-features/update_product.[1.2:40] Update All Group of Product HANSET4_MONOBLC 2 -- Time elapsed: 0.323 s <<< FAILURE!
-org.opentest4j.AssertionFailedError: 
-Soft assert failures:
-Fail - group name:GroupA material codeM001
-Fail - group name:GroupB material codeM002
-classpath:features/update_product.feature:35
+Fail Step Set_Material_By_Group_Name--Data- Group Name:SUNNY Material CodeA1234
+classpath:update_product.feature:37
 	at com.intuit.karate.junit5.FeatureNode.lambda$next$1(FeatureNode.java:86)
 	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
 	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:215)
