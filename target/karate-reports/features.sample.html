@@ -38,8 +38,8 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
       <img src="karate-labs-logo-ring.svg" alt="Karate Labs"/>
     </a>
     <div class="nav-count">
-      <div id="nav-pass" class="bg-success">2</div>
-      <div id="nav-fail" class="bg-danger">0</div>
+      <div id="nav-pass" class="bg-success">1</div>
+      <div id="nav-fail" class="bg-danger">1</div>
     </div>
   </div>
   <div id="nav-env">
@@ -49,12 +49,12 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
     <div>Scenarios</div>
   </div>
   <div id="nav-date">
-    <div>2025-08-21 04:36:29 PM</div>
+    <div>2025-08-27 03:08:21 PM</div>
   </div>
 </div>
 
         <div class="nav-container">
-          <div class="nav-item passed">
+          <div class="nav-item failed">
             <a href="#[1:4]"><span>[1:4]</span> <span>get detail config info</span></a>
           </div>
           <div class="nav-item passed">
@@ -75,7 +75,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
           <div class="scenario-heading" id="[1:4]">
             <div class="heading-container">
               <div class="scenario-tags">
-                <a class="badge badge-primary" href="karate-tags.html">Smoke</a><a class="badge badge-primary" href="karate-tags.html">TEST_CASE_6</a>
+                <a class="badge badge-primary" href="karate-tags.html">Smoke</a><a class="badge badge-primary" href="karate-tags.html">TEST_CASE_7</a>
               </div>
               <div class="scenario-keyword">
                 Scenario: <span>[1:4]</span>
@@ -83,8 +83,8 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
                 <span></span>
               </div>
             </div>
-            <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>15</span>
+            <div class="scenario-time failed">
+              <span>ms:</span>&nbsp;<span>235</span>
             </div>
           </div>
           
@@ -129,7 +129,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method get</span>
       </div>
     </div>
-    <div class="time-cell passed">14</div>
+    <div class="time-cell passed">222</div>
   </div>
 
    
@@ -138,7 +138,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="0.6">16:36:29.248 request:
+  <div class="preformatted" data-parent="0.6">15:08:21.386 request:
 1 &gt; GET http://localhost:3000/config/info/12
 1 &gt; Host: localhost:3000
 1 &gt; Connection: Keep-Alive
@@ -146,17 +146,12 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 1 &gt; Accept-Encoding: gzip,deflate
 
 
-16:36:29.259 response time in milliseconds: 10
-1 &lt; 200
-1 &lt; Content-Type: application/json; charset=utf-8
-1 &lt; Content-Length: 53
-1 &lt; Date: Thu, 21 Aug 2025 09:36:29 GMT
+15:08:21.426 response time in milliseconds: 37
+1 &lt; 204
+1 &lt; Date: Wed, 27 Aug 2025 08:08:21 GMT
 1 &lt; Connection: keep-alive
 1 &lt; Keep-Alive: timeout=5
-{
-  &quot;id_config&quot;:&quot;1235435436545&quot;,
-  &quot;info_1&quot;:&quot;ok la&quot;
-}
+
 
 </div>   
 
@@ -171,13 +166,13 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   <div class="step-row">
     <div class="step-container" id="0.7">
-      <div class="step-ref passed">7</div>
+      <div class="step-ref failed">7</div>
       
-      <div class="step-cell passed">
+      <div class="step-cell failed">
         <span>Then</span>&nbsp;<span>status 200</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell failed">12</div>
   </div>
 
    
@@ -186,7 +181,12 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-     
+  <div class="preformatted" data-parent="0.7">15:08:21.440 classpath:features/sample.feature:7
+Then status 200
+status code was: 204, expected: 200, response time in milliseconds: 37, url: http://localhost:3000/config/info/12, response: 
+
+classpath:features/sample.feature:7
+</div>   
 
   
 
@@ -197,7 +197,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
           <div class="scenario-heading" id="[2:10]">
             <div class="heading-container">
               <div class="scenario-tags">
-                <a class="badge badge-primary" href="karate-tags.html">TEST_CASE_2</a><a class="badge badge-primary" href="karate-tags.html">Smoke</a>
+                <a class="badge badge-primary" href="karate-tags.html">Smoke</a><a class="badge badge-primary" href="karate-tags.html">TEST_CASE_7</a>
               </div>
               <div class="scenario-keyword">
                 Scenario: <span>[2:10]</span>
@@ -206,7 +206,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>12</span>
+              <span>ms:</span>&nbsp;<span>74</span>
             </div>
           </div>
           
@@ -251,7 +251,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method get</span>
       </div>
     </div>
-    <div class="time-cell passed">12</div>
+    <div class="time-cell passed">74</div>
   </div>
 
    
@@ -260,7 +260,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="0.12">16:36:29.271 request:
+  <div class="preformatted" data-parent="0.12">15:08:21.458 request:
 1 &gt; GET http://localhost:3000/masters/config
 1 &gt; Host: localhost:3000
 1 &gt; Connection: Keep-Alive
@@ -268,11 +268,11 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 1 &gt; Accept-Encoding: gzip,deflate
 
 
-16:36:29.280 response time in milliseconds: 9
+15:08:21.526 response time in milliseconds: 67
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=utf-8
 1 &lt; Content-Length: 57
-1 &lt; Date: Thu, 21 Aug 2025 09:36:29 GMT
+1 &lt; Date: Wed, 27 Aug 2025 08:08:21 GMT
 1 &lt; Connection: keep-alive
 1 &lt; Keep-Alive: timeout=5
 {
