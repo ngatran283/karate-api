@@ -16,6 +16,16 @@ parameters:
   default: '5'
   displayName: 'Azure DevOps Test Suite ID (optional)'
 
+- name: productCode
+  type: string
+  default: ''
+  displayName: 'Product Code'
+
+- name: sheet
+  type: string
+  default: ''
+  displayName: 'sheet'
+
 stages:
 - stage: Test
   displayName: 'Run Karate Tests'

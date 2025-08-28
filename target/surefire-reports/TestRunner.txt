@@ -1,12 +1,36 @@
 -------------------------------------------------------------------------------
 Test set: TestRunner
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 3.971 s <<< FAILURE! -- in TestRunner
-update_product.[1.4:46] Update All Group of Product MOCHI World -- Time elapsed: 0.865 s <<< FAILURE!
+Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 4.680 s <<< FAILURE! -- in TestRunner
+update_product.[1.1:46] Update All Group of Product MOMO Hallo -- Time elapsed: 1.237 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 Soft assert failures:
-Fail Step Set_Material_By_Group_Name--Data- Group Name:SUNNY Material CodeA1234
-classpath:update_product.feature:37
+Fail Step Set_Material_By_Group_Name--Data- Group Name:PAPA Material Code1234.0
+Fail Step Set_Material_By_Group_Name--Data- Group Name:MAMA Material Code2423534.0
+classpath:update_product.feature:40
+	at com.intuit.karate.junit5.FeatureNode.lambda$next$1(FeatureNode.java:86)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:215)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:215)
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1939)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEachOrdered(ReferencePipeline.java:641)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
+update_product.[1.2:47] Update All Group of Product MOMO World -- Time elapsed: 0.135 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+Soft assert failures:
+Fail Step Set_Material_By_Group_Name--Data- Group Name:SUNNY Material Code1234.0
+Fail Step Set_Material_By_Group_Name--Data- Group Name:WIND Material Code2423534.0
+classpath:update_product.feature:40
 	at com.intuit.karate.junit5.FeatureNode.lambda$next$1(FeatureNode.java:86)
 	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
 	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:215)
