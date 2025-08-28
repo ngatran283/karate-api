@@ -54,7 +54,7 @@ stages:
                   mavenVersionOption: 'Default'
               # Run Karate tests using Maven
               - script: |
-                  mvn test -Dkarate.options="--tags ${{ parameters.karateTags }}"
+                  mvn test -DproductCode="${{ parameters.productCode }}" -Dsheet="${{ parameters.sheet }}" -Dkarate.options="--tags ${{ parameters.karateTags }}"
                 displayName: 'Run Karate Tests'
 
               # Optional Node.js script
