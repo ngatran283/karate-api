@@ -18,12 +18,12 @@ parameters:
 
 - name: productCode
   type: string
-  default: ''
+  default: ""
   displayName: 'Product Code'
 
 - name: sheet
   type: string
-  default: ''
+  default: ""
   displayName: 'sheet'
 
 stages:
