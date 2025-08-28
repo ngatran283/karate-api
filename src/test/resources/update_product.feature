@@ -4,12 +4,15 @@ Feature: Flow Update Product Configuration
         * url comOccHostname
         * headers commonHeader
         * def softAssert = call read('softAssert.js')
-
-    @Smoke @Update_All_Group_Of_Product1
-    Scenario Outline: Update All Group of Product <productCode> <sheet>
+        * def pc = karate.properties['productCode']
+        * def sh = karate.properties['sheet']
+        * if ((pc && productCode !== pc) || (sh && sheet !== sh)) {karate.log('SKIP_TESTCASE', productCode, ' ', sheet);karate.abort();}
         * def ExcelUtils = Java.type('ExcelUtils')
         * def filePath = karate.toAbsolutePath('payloads/'+productCode+'.xlsx')
         * def groups = ExcelUtils.readSheet(filePath,sheet)
+
+    @Smoke @Update_All_Group_Of_Product1
+    Scenario Outline: Update All Group of Product <productCode> <sheet>
         * def responseGetConfigIdOfProductCode = call read('/separateApi/get_configId_by_productCode.feature@Get_ConfigId_Of_Product_Code')
         * def results = []
             And configure continueOnStepFailure = { enabled: true, continueAfter: true, keywords: ['match', 'status'] }

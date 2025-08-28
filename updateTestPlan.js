@@ -35,14 +35,13 @@ async function parseJUnitReport(filePath) {
   const result = await parseStringPromise(xml);
   const testcases = result.testsuite.testcase || [];
   if (!Array.isArray(testcases)) testcases = [testcases];
-
-    return testcases.map(tc => {
+  testcases = testcases.filter(tc => !tc['system-out'][0].includes('SKIP_TESTCASE'));
+  return testcases.map(tc => {
         let name = tc.$.name.replace(/\[.*?\]/g, '').trim();
         let outcome = "Passed";
         let errorMessage = "";
         let stackTrace = "";
         let systemOutput = "";
-
         if (tc.failure) {
             outcome = "Failed";
             if (Array.isArray(tc.failure)) {
