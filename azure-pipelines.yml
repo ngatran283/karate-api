@@ -12,7 +12,7 @@ parameters:
   displayName: 'Azure DevOps Test Suite ID (optional)'
 
 variables:
-  - name: karateTags
+- name: karateTags
   type: string
   default: '@Update_All_Group_Of_Product1'
   displayName: 'Karate Tags (e.g., @smoke, @regression)'
