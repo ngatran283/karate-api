@@ -1,11 +1,6 @@
 trigger: none
 
 parameters:
-- name: karateTags
-  type: string
-  default: '@Update_All_Group_Of_Product1'
-  displayName: 'Karate Tags (e.g., @smoke, @regression)'
-
 - name: adoTestPlanId
   type: string
   default: '3'
@@ -15,6 +10,12 @@ parameters:
   type: string
   default: '5'
   displayName: 'Azure DevOps Test Suite ID (optional)'
+
+variables:
+  - name: karateTags
+  type: string
+  default: '@Update_All_Group_Of_Product1'
+  displayName: 'Karate Tags (e.g., @smoke, @regression)'
 
 - name: productCode
   type: string

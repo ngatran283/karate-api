@@ -35,7 +35,6 @@ async function parseJUnitReport(filePath) {
   const result = await parseStringPromise(xml);
   const testcases = result.testsuite.testcase || [];
   if (!Array.isArray(testcases)) testcases = [testcases];
-  testcases = testcases.filter(tc => !tc['system-out'][0].includes('SKIP_TESTCASE'));
   return testcases.map(tc => {
         let name = tc.$.name.replace(/\[.*?\]/g, '').trim();
         let outcome = "Passed";
@@ -58,6 +57,9 @@ async function parseJUnitReport(filePath) {
             }
             systemOutput = tc['system-out'][0];
         }
+        if(outcome=="Passed" && tc['system-out'][0] && tc['system-out'][0].includes("SKIP_TESTCASE")){
+          outcome = "Skipped";
+        }
 
         return {
             name,
@@ -67,8 +69,7 @@ async function parseJUnitReport(filePath) {
             systemOutput
 
         };
-    });
-
+    }).filter(tc=>tc.outcome !== "Skipped");
 }
 
 // Create a new test run
@@ -246,7 +247,6 @@ for (const point of points) {
   });
 
   if(testcase.outcome!=='Passed'){
-    console.log("Console: "+testcase.systemOutput)
     payloadAttachment.push({
       pointId: point.id, // ✅ use pointId, not id
       stream: Buffer.from(testcase.systemOutput).toString('base64'),
