@@ -73,9 +73,10 @@ async function parseJUnitReport(filePath) {
 }
 
 // Create a new test run
-async function createTestRun() {
+async function createTestRun(testcases) {
+  const allowedTestSets = new Set(testcases.map(tc => tc.name));
   const points = await getTestPoints();
-  const pointIds = points.map(p => p.id);
+  const pointIds = points.filter(p => allowedTestSets.has(p.testCaseReference.name)).map(p=>p.id);
   const url = `${baseUrl}/test/runs?api-version=7.1`;
   const body = {
     name: `Karate Test Run - ${new Date().toISOString()}`,
@@ -305,13 +306,8 @@ async function completeTestRun(runId) {
   try {
     console.log('Parsing JUnit report...');
     const results = await parseJUnitReport(TEST_REPORT_FILE);
-    results.map((testcase) => {
-    // Detailed logging
-    console.log('-----------------------------------------');
-    console.log(`Test Case : ${testcase.name}`);
-    console.log('-----------------------------------------')});
     console.log('Creating test run...');
-    const run = await createTestRun();
+    const run = await createTestRun(results);
     console.log(`Test run created: ID ${run.id}`);
 
     console.log('Attaching JUnit report...');
