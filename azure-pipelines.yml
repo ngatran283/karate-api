@@ -13,7 +13,7 @@ parameters:
 
 - name: karateTags
   type: string
-  default: '@Update_All_Group_Of_Product1'
+  default: '@Update_Fail_Group_Of_Product'
   displayName: 'Karate Tags (e.g., @smoke, @regression)'
 
 - name: productCode
