@@ -7,7 +7,7 @@ Background:
     
 @Get_Product_Config
 Scenario: Get A Product Configuration
-    Given path comOccPath,'ccpconfigurator',configId
+    Given path comOccPath,'configurator',configId
     And params commonParams
     When method get
     Then status 200
