@@ -4,11 +4,11 @@ function fn() {
       comOccPath: 'dv'
     };
     karate.log('[print]', 'Hostname:', config.comOccHostname);
-   // var result = karate.callSingle('classpath:separateApi/auth.feature@Auth');
-    config.authToken = "abcdadf";
+    var result = karate.callSingle('classpath:separateApi/auth.feature@Auth');
+    config.authToken = result.token;
     config.commonHeader = {
         Accept: 'application/json',
-        Authorization: 'Bearer ' + 'abddsds'
+        Authorization: 'Bearer ' + config.authToken
       };
     config.commonParams = { cps: true};
     return config;
