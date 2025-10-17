@@ -46,7 +46,6 @@ stages:
           deploy:
             steps:
               - checkout: self
-
               # Show execution mode
               - script: |
                   echo "Running Karate tests with tags: ${{ parameters.karateTags }}"
@@ -74,7 +73,7 @@ stages:
                 condition:
                   succeededOrFailed()
               - script: |
-                  npm install adm-zip
+                  npm install
                 displayName: 'Install Node.js dependencies'
                 condition:
                   succeededOrFailed()
